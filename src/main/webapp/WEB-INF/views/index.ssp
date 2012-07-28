@@ -1,0 +1,15 @@
+<% import com.futurechimps.squeryli.models.Article %>
+<% import org.squeryl.Query %>
+<%@ val articles:Query[Article] %>
+
+<div class="row">
+  <div class="span8">
+    <h1>Scalatra</h1>
+
+    #for(article <- articles.toList)
+        <h2><%= article.title %></h2>
+        <p><%= article.body %></p>
+    #end
+
+  </div>
+</div>
