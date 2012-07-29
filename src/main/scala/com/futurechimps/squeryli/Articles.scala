@@ -49,8 +49,4 @@ class Articles extends ScalatraServlet
 
 	}
   
-  def rand(list:List[String]):String = {
-    Collections.shuffle(java.util.Arrays.asList(list:_*))
-    list.head
-  }
 }
