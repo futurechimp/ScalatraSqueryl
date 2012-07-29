@@ -7,13 +7,13 @@ import org.squeryl.Session
 import org.squeryl.SessionFactory
 import org.squeryl.Schema
 
-trait DatabaseInit extends Initializable {
+trait DatabaseInit {
   val databaseUsername = "root"
   val databasePassword = ""
   val databaseConnection = "jdbc:mysql://localhost:3306/squeryl-tryout"
 
   var cpds = new ComboPooledDataSource
-  def initialize(config: Config) {
+  def configureDb() {
     cpds.setDriverClass("com.mysql.jdbc.Driver")
     cpds.setJdbcUrl(databaseConnection)
     cpds.setUser(databaseUsername)

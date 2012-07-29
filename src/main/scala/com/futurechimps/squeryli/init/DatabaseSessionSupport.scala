@@ -7,8 +7,30 @@ import org.squeryl.Session
 import org.squeryl.SessionFactory
 import scala.util.DynamicVariable
 
-trait DatabaseSessionSupport extends Handler {
-  val dbSession = new DynamicVariable[Session](null)
+object DatabaseSessionSupport {
+  val key = {
+    val n = getClass.getName
+    if (n.endsWith("$")) n.dropRight(1) else n
+  }
+}
+
+trait DatabaseSessionSupport { self: ScalatraBase =>
+  import DatabaseSessionSupport._
+
+  def dbSession = request.get(key).orNull.asInstanceOf[Session]
+  
+  before() { 
+    request(key) = SessionFactory.newSession 
+    dbSession.bindToCurrentThread 
+  }
+
+  after() {
+    dbSession.close
+    dbSession.unbindFromCurrentThread
+  }
+
+  private val _dbSession = new DynamicVariable[Session](null)
+  def dynVarSession = _dbSession.value
   abstract override def handle(req: HttpServletRequest, res: HttpServletResponse) {
     dbSession.withValue(SessionFactory.newSession) {
       dbSession.value.bindToCurrentThread
