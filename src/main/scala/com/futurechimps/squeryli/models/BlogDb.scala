@@ -39,7 +39,9 @@ class User(val id: Long, val firstName: String, val lastName: String, val email:
 }
 
 
-
+/**
+ * The BlogDb object acts as a cross between a Dao and a Schema definition file.
+ */
 object BlogDb extends Schema {
   
   val articles = table[Article]("articles")
