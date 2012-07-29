@@ -6,6 +6,11 @@ version := "0.1.0-SNAPSHOT"
 
 scalaVersion := "2.9.1"
 
+
+ivyXML := <dependencies>
+      <exclude org="org.eclipse.jetty.orbit" />
+    </dependencies>
+
 seq(webSettings :_*)
 
 libraryDependencies ++= Seq(
@@ -22,6 +27,3 @@ libraryDependencies ++= Seq(
 
 resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
 
-ivyXML := <dependencies>
-      <exclude org="org.eclipse.jetty.orbit" />
-    </dependencies>
