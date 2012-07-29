@@ -13,7 +13,7 @@ trait DatabaseInit extends Initializable {
   val databaseConnection = "jdbc:mysql://localhost:3306/squeryl-tryout"
 
   var cpds = new ComboPooledDataSource
-  abstract override def initialize(config: Config) {
+  def initialize(config: Config) {
     cpds.setDriverClass("com.mysql.jdbc.Driver")
     cpds.setJdbcUrl(databaseConnection)
     cpds.setUser(databaseUsername)
