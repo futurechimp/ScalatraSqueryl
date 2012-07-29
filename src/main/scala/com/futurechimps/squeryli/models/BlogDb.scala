@@ -11,9 +11,7 @@ import org.squeryl.PersistenceStatus
 /**
  * An article in the blog.
  */
-class Article(val id: Long, val title: String, val body: String) 
-	extends KeyedEntity[Long] 
-	with PersistenceStatus { 
+class Article(val id: Long, val title: String, val body: String) extends ScalatraRecord { 
   
   def this() = this(0, "default title", "default body")
   
@@ -32,8 +30,7 @@ class Article(val id: Long, val title: String, val body: String)
  * A user of the site.
  */
 class User(val id: Long, val firstName: String, val lastName: String, val email: Option[String]) 
-	extends KeyedEntity[Long] 
-	with PersistenceStatus {
+	extends ScalatraRecord {
 
   def this() = this(0, "foo", "bar", Some("string"))
 }
@@ -53,4 +50,8 @@ object BlogDb extends Schema {
   on(users)(u => declare(
     u.id is(autoIncremented)))
   
+}
+
+trait ScalatraRecord extends  KeyedEntity[Long] with PersistenceStatus {
+  // and later, validation, probably...
 }
