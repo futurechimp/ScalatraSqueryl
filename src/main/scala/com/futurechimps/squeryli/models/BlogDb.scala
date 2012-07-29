@@ -5,13 +5,27 @@ import org.squeryl.Schema
 import org.squeryl.annotations.Column
 import org.squeryl.Query
 import org.squeryl.KeyedEntity
+import org.squeryl.PersistenceStatus
 
 
-class Article(val id: Long, val title: String, val body: String) extends KeyedEntity[Long] { 
+/**
+ * An article in the blog.
+ */
+class Article(val id: Long, val title: String, val body: String) 
+	extends KeyedEntity[Long] 
+	with PersistenceStatus { 
+  
   def this() = this(0, "default title", "default body")
 }
 
-class User(val id: Long, val firstName: String, val lastName: String, val email: Option[String]) extends KeyedEntity[Long] {
+
+/**
+ * A user of the site.
+ */
+class User(val id: Long, val firstName: String, val lastName: String, val email: Option[String]) 
+	extends KeyedEntity[Long] 
+	with PersistenceStatus {
+
   def this() = this(0, "foo", "bar", Some("string"))
 }
 
