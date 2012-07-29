@@ -15,16 +15,19 @@ class Articles extends ScalatraServlet
 	with DatabaseInit 
 	with DatabaseSessionSupport 
 	with ScalateSupport 
-	with MethodOverride {
+	with MethodOverride
+	with FlashMapSupport {
 
   get("/") {
     contentType = "text/html"
+      
     val articles = from(BlogDb.articles)(select(_))
     ssp("articles/index", "articles" -> articles)
   }
   
   get("/new") {
     contentType = "text/html"
+      
     val article = new Article()
     ssp("/articles/new", "article" -> article)
   }
@@ -36,11 +39,13 @@ class Articles extends ScalatraServlet
     if(article.isValid) {
 		val result = BlogDb.articles.insert(article)
 		if(result.isPersisted) {
+		    flash("notice") = "Article successfully created"
 			redirect("/articles")
 		} else {      
 			// something really bad happened here.
 		}
     } else {
+      flash("error") = "There were problems creating your article"
       ssp("articles/new", "article" -> article)
     }
   }
