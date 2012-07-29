@@ -1,3 +1,6 @@
+import org.scalatra._
+import org.eclipse.jetty.servlet.ServletHolder
+
 class Scalatra extends LifeCycle {
 
   override def init(context: ServletContext) {
