@@ -66,5 +66,6 @@
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/bootstrap-responsive.min.js"></script>
+    <script src="/js/angular-1.0.1.js"></script>
   </body>
 </html>
