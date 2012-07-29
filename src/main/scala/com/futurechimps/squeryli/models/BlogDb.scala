@@ -11,22 +11,17 @@ import org.squeryl.PersistenceStatus
 /**
  * An article in the blog.
  */
-class Article(val id: Long, val title: String, val body: String) extends ScalatraRecord { 
-  
+class Article(val id: Long, val title: String, val body: String) extends ScalatraRecord {
+
   def this() = this(0, "default title", "default body")
-  
-  // What I'd really like here for validations would be something like:
-  // def validates {
-  //   presenceOf("title")
-  //   presenceOf("body")
-  //   minimumLengthOf("body", 300) 
-  // }
-  
-  
+
+  /**
+   * TODO: ask Maxime what I should really do here.
+   */
   def isValid = {
     if(this.title != "default title" && this.title != "" && this.title != null &&
        this.body != "default body" && this.body != "" && this.body != null) {
-      true 
+      true
     } else {
       false
     }
@@ -37,7 +32,7 @@ class Article(val id: Long, val title: String, val body: String) extends Scalatr
 /**
  * A user of the site.
  */
-class User(val id: Long, val firstName: String, val lastName: String, val email: Option[String]) 
+class User(val id: Long, val firstName: String, val lastName: String, val email: Option[String])
 	extends ScalatraRecord {
 
   def this() = this(0, "foo", "bar", Some("string"))
@@ -48,16 +43,16 @@ class User(val id: Long, val firstName: String, val lastName: String, val email:
  * The BlogDb object acts as a cross between a Dao and a Schema definition file.
  */
 object BlogDb extends Schema {
-  
+
   val articles = table[Article]("articles")
   val users = table[User]("users")
 
   on(articles)(a => declare(
     a.id is(autoIncremented)))
-    
+
   on(users)(u => declare(
     u.id is(autoIncremented)))
-  
+
 }
 
 trait ScalatraRecord extends KeyedEntity[Long] with PersistenceStatus {
