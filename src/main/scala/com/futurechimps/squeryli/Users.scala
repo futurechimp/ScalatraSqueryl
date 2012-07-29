@@ -10,7 +10,6 @@ import com.futurechimps.squeryli.models.BlogDb
 import org.squeryl.PrimitiveTypeMode._
 
 class Users  extends ScalatraServlet 
-	with DatabaseInit 
 	with DatabaseSessionSupport 
 	with ScalateSupport 
 	with MethodOverride  {
