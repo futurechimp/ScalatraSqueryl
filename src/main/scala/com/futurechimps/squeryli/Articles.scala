@@ -33,10 +33,14 @@ class Articles extends ScalatraServlet
     contentType = "text/html"
     
     val article = new Article(0, params("title"), params("body"))
-    val result = BlogDb.articles.insert(article)
-    if(result.isPersisted) {
-      redirect("/articles")
-    } else {      
+    if(article.isValid) {
+		val result = BlogDb.articles.insert(article)
+		if(result.isPersisted) {
+			redirect("/articles")
+		} else {      
+			// something really bad happened here.
+		}
+    } else {
       ssp("articles/new", "article" -> article)
     }
   }

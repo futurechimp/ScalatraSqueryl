@@ -16,6 +16,15 @@ class Article(val id: Long, val title: String, val body: String)
 	with PersistenceStatus { 
   
   def this() = this(0, "default title", "default body")
+  
+  def isValid = {
+    if(this.title != "default title" && this.title != "" && this.title != null &&
+       this.body != "default body" && this.body != "" && this.body != null) {
+      true 
+    } else {
+      false
+    }
+  }
 }
 
 
