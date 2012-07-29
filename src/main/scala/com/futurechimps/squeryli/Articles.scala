@@ -46,7 +46,6 @@ class Articles extends ScalatraServlet
 	  contentType = "text/html"
 	  layoutTemplate(path)
 	} orElse serveStaticResource() getOrElse resourceNotFound()
-
-	}
+  }
   
 }
