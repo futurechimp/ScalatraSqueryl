@@ -24,7 +24,7 @@ class Articles extends ScalatraServlet
     ssp("articles/index", "articles" -> articles)
   }
   
-  get("/new") {
+  get("/new") { 
     contentType = "text/html"
       
     val article = new Article()
