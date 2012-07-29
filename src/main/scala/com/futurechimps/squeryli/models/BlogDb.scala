@@ -15,6 +15,14 @@ class Article(val id: Long, val title: String, val body: String) extends Scalatr
   
   def this() = this(0, "default title", "default body")
   
+  // What I'd really like here for validations would be something like:
+  // def validates {
+  //   presenceOf("title")
+  //   presenceOf("body")
+  //   minimumLengthOf("body", 300) 
+  // }
+  
+  
   def isValid = {
     if(this.title != "default title" && this.title != "" && this.title != null &&
        this.body != "default body" && this.body != "" && this.body != null) {
@@ -52,6 +60,6 @@ object BlogDb extends Schema {
   
 }
 
-trait ScalatraRecord extends  KeyedEntity[Long] with PersistenceStatus {
+trait ScalatraRecord extends KeyedEntity[Long] with PersistenceStatus {
   // and later, validation, probably...
 }
