@@ -23,21 +23,10 @@ class Articles extends ScalatraServlet
     ssp("/index", "articles" -> articles)
   }
   
-  get("/create-db") {
-    BlogDb.create
-  }
-  
-  get("/add-a-user") {
+  post("/") {
     contentType = "text/html"
-    val firstNames = List("Ivan", "Dave", "Mikko", "Ross", "Jared", "Stefan", "Stefan")
-    val lastNames = List("Porto Carrero", "Hrycyszyn", "Nylen", "Baker", "Armstrong", "De Boey", "Ollinger")
-    val emails = List("ivan@ivan.org", "dave@dave.org", "miko2@mikko.org", "foo@blah.org", "super@super.org", "flap@flap.org", "fupser@fupser.org")
-    val user = BlogDb.users.insert(new User(0, rand(firstNames), rand(lastNames), Some(rand(emails))))
-    
-  }
-  
-  get("/add-article") {
-    val article = BlogDb.articles.insert(new Article(0, "Foo", "Bar body"))
+    val article = new Article(0, params("title"), params("body"))
+    val result = BlogDb.articles.insert(article)
   }
 
   notFound {
