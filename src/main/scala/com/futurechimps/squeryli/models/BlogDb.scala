@@ -13,15 +13,7 @@ import org.squeryl.PersistenceStatus
  */
 class Article(val id: Long, val title: String, val body: String) extends ScalatraRecord { 
   
-  def this() = this(0, "default title", "default body")
-  
-  // What I'd really like here for validations would be something like:
-  // def validates {
-  //   presenceOf("title")
-  //   presenceOf("body")
-  //   minimumLengthOf("body", 300) 
-  // }
-  
+  def this() = this(0, "default title", "default body") 
   
   def isValid = {
     if(this.title != "default title" && this.title != "" && this.title != null &&
@@ -57,7 +49,26 @@ object BlogDb extends Schema {
     
   on(users)(u => declare(
     u.id is(autoIncremented)))
-  
+
+}
+
+object Article {
+
+  def create(article:Article):Boolean = {
+    if(article.isValid) {
+      inTransaction {
+        val result = BlogDb.articles.insert(article)
+        if(result.isPersisted) {
+          true
+        } else {
+          false
+        }
+      }
+    } else {
+      false
+    }
+  }
+
 }
 
 trait ScalatraRecord extends KeyedEntity[Long] with PersistenceStatus {

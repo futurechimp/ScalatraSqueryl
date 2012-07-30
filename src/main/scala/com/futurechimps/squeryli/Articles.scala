@@ -35,18 +35,18 @@ class Articles extends ScalatraServlet
     contentType = "text/html"
     
     val article = new Article(0, params("title"), params("body"))
-    if(article.isValid) {
-		val result = BlogDb.articles.insert(article)
-		if(result.isPersisted) {
-		    flash("notice") = "Article successfully created"
-			redirect("/articles")
-		} else {      
-			// something really bad happened here.
-		}
+
+    if(Article.create(article)) {
+      flash("notice") = "Article successfully created"
+      redirect("/articles")
     } else {
       flash("error") = "There were problems creating your article"
       ssp("articles/new", "article" -> article)
     }
+  }
+
+  get("/create-db") {
+    BlogDb.create
   }
 
   notFound {
