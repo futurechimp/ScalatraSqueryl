@@ -1,4 +1,4 @@
-<%@ val title:String = "Scalatra" %>
+<%@ val title:String = "ScalatraSqueryl" %>
 <%@ val body:String %>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,12 +42,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Scalatra examples</a>
+          <a class="brand" href="#">ScalatraSqueryl</a>
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="/articles">Articles</a></li>
+              <li><a href="/articles/new">New Article</a></li>
+              <li><a href="/users">Users</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

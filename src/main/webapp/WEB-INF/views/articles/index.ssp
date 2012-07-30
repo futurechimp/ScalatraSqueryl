@@ -4,7 +4,6 @@
 
 <div class="row">
   <div class="span8">
-    <h1>Scalatra</h1>
 
     #for(article <- articles.toList)
         <h2><%= article.title %></h2>

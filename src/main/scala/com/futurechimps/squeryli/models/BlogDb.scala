@@ -15,17 +15,6 @@ class Article(val id: Long, val title: String, val body: String) extends Scalatr
 
   def this() = this(0, "default title", "default body")
 
-  /**
-   * TODO: ask Maxime what I should really do here.
-   */
-  def isValid = {
-    if(this.title != "default title" && this.title != "" && this.title != null &&
-       this.body != "default body" && this.body != "" && this.body != null) {
-      true
-    } else {
-      false
-    }
-  }
 }
 
 
@@ -55,6 +44,25 @@ object BlogDb extends Schema {
 
 }
 
+object Article {
+
+  def create(article:Article):Boolean = {
+    inTransaction {
+      val result = BlogDb.articles.insert(article)
+      if(result.isPersisted) {
+        true
+      } else {
+        false
+      }
+    }
+  }
+}
+
+/**
+ * This trait is just a way to aggregate our model style across multiple
+ * models so that we have a single point of change if we want to add
+ * anything to our model behaviour
+ */
 trait ScalatraRecord extends KeyedEntity[Long] with PersistenceStatus {
-  // and later, validation, probably...
+
 }
