@@ -46,7 +46,10 @@ class Articles extends ScalatraServlet
   }
 
   get("/create-db") {
+    contentType = "text/html"
+
     BlogDb.create
+    redirect("/articles/new")
   }
 
   notFound {
