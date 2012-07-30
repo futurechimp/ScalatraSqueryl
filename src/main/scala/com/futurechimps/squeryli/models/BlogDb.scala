@@ -13,16 +13,8 @@ import org.squeryl.PersistenceStatus
  */
 class Article(val id: Long, val title: String, val body: String) extends ScalatraRecord { 
   
-  def this() = this(0, "default title", "default body") 
-  
-  def isValid = {
-    if(this.title != "default title" && this.title != "" && this.title != null &&
-       this.body != "default body" && this.body != "" && this.body != null) {
-      true 
-    } else {
-      false
-    }
-  }
+  def this() = this(0, "default title", "default body")
+
 }
 
 
@@ -55,20 +47,15 @@ object BlogDb extends Schema {
 object Article {
 
   def create(article:Article):Boolean = {
-    if(article.isValid) {
-      inTransaction {
-        val result = BlogDb.articles.insert(article)
-        if(result.isPersisted) {
-          true
-        } else {
-          false
-        }
+    inTransaction {
+      val result = BlogDb.articles.insert(article)
+      if(result.isPersisted) {
+        true
+      } else {
+        false
       }
-    } else {
-      false
     }
   }
-
 }
 
 /**
