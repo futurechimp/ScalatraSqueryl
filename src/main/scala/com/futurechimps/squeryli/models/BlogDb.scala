@@ -71,6 +71,11 @@ object Article {
 
 }
 
+/**
+ * This trait is just a way to aggregate our model style across multiple
+ * models so that we have a single point of change if we want to add
+ * anything to our model behaviour
+ */
 trait ScalatraRecord extends KeyedEntity[Long] with PersistenceStatus {
-  // and later, validation, probably...
+  // we can add any common model behaviour in here, as necessary
 }
