@@ -9,7 +9,7 @@ It uses Scalatra 2.1's new [LifeCycle](http://www.scalatra.org/2.1/book/#Organiz
 
 To try it out, `git clone` the code and:
 
-1. Launch [SBT](http://code.google.com/p/simple-build-tool).
+1. Launch [SBT](http://www.scala-sbt.org/).
 
 ```
 ./sbt
