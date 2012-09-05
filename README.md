@@ -21,8 +21,8 @@ To try it out, `git clone` the code and:
 container:start
 ```
 
-3. Go to http://localhost:8080/articles/create-db. This will create the database - you'll need a blank MySQL schema called "squeryl-tryout". You can change database creds in com.futurechimps.squeryli.init.DatabaseInit.
+3. Go to http://localhost:8080/articles/create-db. This will create the database - you'll need a blank MySQL schema called "squeryltryout". You can change database creds in com.futurechimps.squeryli.init.DatabaseInit.
 
-4. Learn more at http://www.scalatra.org/stable/book.
+4. Learn more at http://www.scalatra.org/
 
 5. Happy hacking!
