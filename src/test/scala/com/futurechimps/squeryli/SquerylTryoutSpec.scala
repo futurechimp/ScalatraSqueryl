@@ -8,7 +8,7 @@ class SquerylTryoutSpec extends ScalatraSpec { def is =
     "should return status 200"                  ! root200^
                                                 end
     
-  addServlet(classOf[SquerylTryout], "/*")
+  addServlet(classOf[Articles], "/*")
 
   def root200 = get("/") { 
     status must_== 200
