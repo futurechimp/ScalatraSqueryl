@@ -10,7 +10,7 @@ import org.squeryl.Schema
 trait DatabaseInit {
   val databaseUsername = "root"
   val databasePassword = ""
-  val databaseConnection = "jdbc:mysql://localhost:3306/squeryl-tryout"
+  val databaseConnection = "jdbc:mysql://localhost:3306/squeryltryout"
 
   var cpds = new ComboPooledDataSource
   def configureDb() {
