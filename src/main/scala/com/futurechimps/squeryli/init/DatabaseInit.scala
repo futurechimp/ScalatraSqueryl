@@ -1,4 +1,4 @@
-package com.futurechimps.squeryli.init
+package com.futurechimps.squeryli.data
 
 import com.mchange.v2.c3p0.ComboPooledDataSource
 import org.scalatra.Initializable

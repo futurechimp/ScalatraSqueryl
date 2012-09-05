@@ -1,4 +1,4 @@
-package com.futurechimps.squeryli.init
+package com.futurechimps.squeryli.data
 
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse

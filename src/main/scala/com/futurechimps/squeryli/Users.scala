@@ -2,8 +2,8 @@ package com.futurechimps.squeryli
 
 import org.scalatra._
 import scalate.ScalateSupport
-import com.futurechimps.squeryli.init.DatabaseInit
-import com.futurechimps.squeryli.init.DatabaseSessionSupport
+import com.futurechimps.squeryli.data.DatabaseInit
+import com.futurechimps.squeryli.data.DatabaseSessionSupport
 import com.futurechimps.squeryli.models.Article
 import com.futurechimps.squeryli.models.User
 import com.futurechimps.squeryli.models.BlogDb
