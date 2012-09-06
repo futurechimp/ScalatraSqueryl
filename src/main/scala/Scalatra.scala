@@ -10,4 +10,8 @@ class Scalatra extends LifeCycle with DatabaseInit {
     context mount (new Articles, "/articles/*")
     context mount (new Users, "/users/*")
   }
+  
+  override def destroy(context:ServletContext) {
+    closeDbConnection()
+  }
 }

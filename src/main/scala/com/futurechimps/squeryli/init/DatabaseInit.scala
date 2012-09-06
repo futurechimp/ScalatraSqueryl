@@ -6,8 +6,10 @@ import org.squeryl.adapters.MySQLAdapter
 import org.squeryl.Session
 import org.squeryl.SessionFactory
 import org.squeryl.Schema
+import org.slf4j.{Logger, LoggerFactory}
 
 trait DatabaseInit {
+  val logger =  LoggerFactory.getLogger(getClass)
   val databaseUsername = "root"
   val databasePassword = ""
   val databaseConnection = "jdbc:mysql://localhost:3306/squeryltryout"
@@ -28,6 +30,11 @@ trait DatabaseInit {
     def connection = {
       Session.create(cpds.getConnection, new MySQLAdapter)
     }
+  }
+  
+  def closeDbConnection() {
+    logger.info("Closing c3po connection pool")
+    cpds.close()
   }
 }
 
