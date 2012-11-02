@@ -17,30 +17,15 @@ class Article(val id: Long, val title: String, val body: String) extends Scalatr
 
 }
 
-
-/**
- * A user of the site.
- */
-class User(val id: Long, val firstName: String, val lastName: String, val email: Option[String])
-	extends ScalatraRecord {
-
-  def this() = this(0, "foo", "bar", Some("string"))
-}
-
-
 /**
  * The BlogDb object acts as a cross between a Dao and a Schema definition file.
  */
 object BlogDb extends Schema {
 
   val articles = table[Article]("articles")
-  val users = table[User]("users")
 
   on(articles)(a => declare(
     a.id is(autoIncremented)))
-
-  on(users)(u => declare(
-    u.id is(autoIncremented)))
 
 }
 

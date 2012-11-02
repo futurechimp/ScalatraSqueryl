@@ -10,11 +10,13 @@ import org.slf4j.{Logger, LoggerFactory}
 
 trait DatabaseInit {
   val logger =  LoggerFactory.getLogger(getClass)
+  
   val databaseUsername = "root"
   val databasePassword = ""
   val databaseConnection = "jdbc:mysql://localhost:3306/squeryltryout"
 
   var cpds = new ComboPooledDataSource
+
   def configureDb() {
     cpds.setDriverClass("com.mysql.jdbc.Driver")
     cpds.setJdbcUrl(databaseConnection)
@@ -28,6 +30,7 @@ trait DatabaseInit {
     SessionFactory.concreteFactory = Some(() => connection)
     
     def connection = {
+      logger.info("Creating connection with c3po connection pool")
       Session.create(cpds.getConnection, new MySQLAdapter)
     }
   }

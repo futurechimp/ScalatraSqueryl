@@ -42,13 +42,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">ScalatraSqueryl</a>
+          <a class="brand" href="/">ScalatraSqueryl</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="/articles">Articles</a></li>
+              <li class="active"><a href="/">Home</a></li>
               <li><a href="/articles/new">New Article</a></li>
-              <li><a href="/users">Users</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

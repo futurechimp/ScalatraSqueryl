@@ -5,7 +5,6 @@ import scalate.ScalateSupport
 import com.futurechimps.squeryli.data.DatabaseInit
 import com.futurechimps.squeryli.data.DatabaseSessionSupport
 import com.futurechimps.squeryli.models.Article
-import com.futurechimps.squeryli.models.User
 import com.futurechimps.squeryli.models.BlogDb
 import org.squeryl.PrimitiveTypeMode._
 import java.util.Random
@@ -21,24 +20,24 @@ class Articles extends ScalatraServlet
     contentType = "text/html"
       
     val articles = from(BlogDb.articles)(select(_))
-    ssp("articles/index", "articles" -> articles)
+    ssp("/articles/index", "articles" -> articles)
   }
   
-  get("/new") { 
+  get("/articles/new") { 
     contentType = "text/html"
       
     val article = new Article()
     ssp("/articles/new", "article" -> article)
   }
   
-  post("/") {
+  post("/articles") {
     contentType = "text/html"
     
     val article = new Article(0, params("title"), params("body"))
 
     if(Article.create(article)) {
       flash("notice") = "Article successfully created"
-      redirect("/articles")
+      redirect("/")
     } else {
       flash("error") = "There were problems creating your article"
       ssp("articles/new", "article" -> article)
