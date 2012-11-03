@@ -29,17 +29,4 @@ trait DatabaseSessionSupport { this: ScalatraBase =>
     dbSession.unbindFromCurrentThread
   }
 
-  // private val _dbSession = new DynamicVariable[Session](null)
-  // def dynVarSession = _dbSession.value
-  // abstract override def handle(req: HttpServletRequest, res: HttpServletResponse) {
-  //   dbSession.withValue(SessionFactory.newSession) {
-  //     dbSession.value.bindToCurrentThread
-  //     try {
-  //       super.handle(req, res)
-  //     } finally {
-  //       dbSession.value.close
-  //       dbSession.value.unbindFromCurrentThread
-  //     }
-  //   }
-  // }
 }
