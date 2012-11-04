@@ -12,7 +12,8 @@ import java.util.Collections
 
 class Articles extends ScalatraServlet 
 	with DatabaseSessionSupport 
-	with ScalateSupport 
+	with ScalateSupport
+  with UrlGeneratorSupport
 	with MethodOverride
 	with FlashMapSupport {
 
@@ -23,7 +24,7 @@ class Articles extends ScalatraServlet
     ssp("/articles/index", "articles" -> articles)
   }
   
-  get("/articles/new") { 
+  val newArticle = get("/articles/new") { 
     contentType = "text/html"
       
     val article = new Article()
