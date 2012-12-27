@@ -14,7 +14,6 @@ class Articles extends ScalatraServlet
   with SessionSupport
 	with DatabaseSessionSupport 
 	with ScalateSupport
-  with UrlGeneratorSupport
 	with MethodOverride
 	with FlashMapSupport {
 
