@@ -1,7 +1,7 @@
 import org.scalatra.LifeCycle
 import javax.servlet.ServletContext
-import com.futurechimps.squeryli._
-import com.futurechimps.squeryli.data._
+import com.futurechimps.squeryli.Articles
+import com.futurechimps.squeryli.data.DatabaseInit
 
 class ScalatraBootstrap extends LifeCycle with DatabaseInit {
 
