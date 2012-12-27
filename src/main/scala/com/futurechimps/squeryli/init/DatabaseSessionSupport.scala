@@ -1,10 +1,7 @@
 package com.futurechimps.squeryli.data
 
-import javax.servlet.http.HttpServletRequest
-import javax.servlet.http.HttpServletResponse
 import org.squeryl.Session
 import org.squeryl.SessionFactory
-import scala.util.DynamicVariable
 import org.scalatra._
 
 object DatabaseSessionSupport {
