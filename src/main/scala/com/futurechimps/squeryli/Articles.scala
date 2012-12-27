@@ -11,6 +11,7 @@ import java.util.Random
 import java.util.Collections
 
 class Articles extends ScalatraServlet 
+  with SessionSupport
 	with DatabaseSessionSupport 
 	with ScalateSupport 
 	with MethodOverride
