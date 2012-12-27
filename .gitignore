@@ -5,3 +5,5 @@
 .history
 .cache
 .lib
+.idea
+.idea_modules
