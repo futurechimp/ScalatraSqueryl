@@ -7,7 +7,8 @@
 
     #for(article <- articles.toList)
         <h2><%= article.title %></h2>
-        <p><%= unescape(article.body.replace("\n", "<br />")) %></p>
+        <!-- hey, it's an ORM demo, don't mock the html! -->
+        <p><%= unescape(article.body.replace("\n", "<br />")) %></p> 
     #end
 
   </div>
